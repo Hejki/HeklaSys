@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout">
+<body>
+    <h2 layout:fragment="page-title">Zařízení</h2>
+    <div layout:fragment="content">
+        <div class="row">
+            <div class="col-md-12">
+                <section class="widget">
+                    <!--<header>-->
+                        <!--<h4><i class="fa fa-sitemap"></i> Uzly</h4>-->
+                    <!--</header>-->
+                    <div class="body">
+                        <table class="table table-hover table-striped">
+                            <thead>
+                            <tr>
+                                <th>Identifikátor</th>
+                                <th>Umístění</th>
+                                <th>Uzel</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr th:each="device : ${devices}">
+                                <td>
+                                    <a th:href="@{/devices/} + ${device.id}">
+                                        <i th:class="'fa fa-' + ${device.type}"></i>
+                                        <span th:text="${device.identifier}"/>
+                                    </a>
+                                </td>
+                                <td th:text="${device.room.name}"></td>
+                                <td><span th:if="${device.node}" th:text="${device.node.identifier}"/></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

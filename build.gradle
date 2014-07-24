@@ -1,0 +1,12 @@
+
+
+project(':server') {
+    version = '0.1'
+}
+
+project(':node') {
+    version = '0.1'
+}
+
+
+

@@ -1,0 +1,5 @@
+.gradle
+node/.codelite
+node/build
+out
+server/build
