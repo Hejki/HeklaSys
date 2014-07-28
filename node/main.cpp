@@ -70,9 +70,9 @@ bool hs_setup() {
 #endif
     
     if (!ether.dhcpSetup()) {
-        LOG("DHCP failed.");
+        dbg("DHCP failed.");
     } else {
-        LOG("IP: %d.%d.%d.%d", ether.myip[0], ether.myip[1], ether.myip[2], ether.myip[3]);
+        dbg("IP: %d.%d.%d.%d", ether.myip[0], ether.myip[1], ether.myip[2], ether.myip[3]);
     }
     
     ether.udpServerListenOnPort(&hs_udpReceive, udpLocalPort);
