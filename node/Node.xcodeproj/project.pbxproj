@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		26E2A57D1983F503000C92EB /* hs_config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hs_config.cpp; sourceTree = "<group>"; };
+		26E2A57E1983F503000C92EB /* hs_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hs_config.h; sourceTree = "<group>"; };
+		26E2A57F19843A71000C92EB /* dbg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dbg.cpp; sourceTree = "<group>"; };
+		26E2A58019843A71000C92EB /* dbg.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dbg.h; sourceTree = "<group>"; };
+		5E91107FE200566F272B28B6 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		5E9110B0266395F3C33CEFC0 /* ReadMe.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = ReadMe.md; sourceTree = "<group>"; };
+		5E9110F1C21FDC42B42702BE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
+		5E91113787402FA990994272 /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		5E9111BB0C2F4852633838E6 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		5E911219AE507E500E1E8FDA /* enc28j60.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = enc28j60.cpp; sourceTree = "<group>"; };
+		5E91123BAC48C05036C04469 /* EtherCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EtherCard.h; sourceTree = "<group>"; };
+		5E911240E07E72448FBAFF1A /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = config.h; sourceTree = "<group>"; };
+		5E91130B597848DD5F1DB9CE /* HSMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HSMessage.cpp; sourceTree = "<group>"; };
+		5E9113AECBEF5E0F63EE9210 /* ard-reset-arduino */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ard-reset-arduino"; sourceTree = "<group>"; };
+		5E91140F3961516D8A0B5ED0 /* MCP79412RTC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MCP79412RTC.cpp; sourceTree = "<group>"; };
+		5E91150352445ACE692B99F0 /* Time.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Time.h; sourceTree = "<group>"; };
+		5E9115267F859196BECE974E /* Arduino.mk */ = {isa = PBXFileReference; lastKnownFileType = file.mk; path = Arduino.mk; sourceTree = "<group>"; };
+		5E9115531EDA83802CFD78A1 /* net.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = net.h; sourceTree = "<group>"; };
+		5E9115DF04E9CC69CE9050E7 /* LICENSE.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = LICENSE.md; sourceTree = "<group>"; };
+		5E9115ECB655E082E3666CDB /* keywords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		5E911617BDFB1E73029FF5E6 /* dhcp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dhcp.cpp; sourceTree = "<group>"; };
+		5E9116433FD17128FA7A048F /* tcpip.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tcpip.cpp; sourceTree = "<group>"; };
+		5E911695B4920A76D1B0D7FE /* udpserver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = udpserver.cpp; sourceTree = "<group>"; };
+		5E9116E5791BE7868789ECEF /* twi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = twi.h; sourceTree = "<group>"; };
+		5E91175C7A9E15EA7D964298 /* licence.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = licence.txt; sourceTree = "<group>"; };
+		5E91179AE67A7D7206048A00 /* CONTRIBUTING.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = CONTRIBUTING.md; sourceTree = "<group>"; };
+		5E911845EE20CE3D67E6C329 /* dns.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = dns.cpp; sourceTree = "<group>"; };
+		5E9118508FAE0CD61487E92E /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		5E91186D3DD0F6EE962BCCE6 /* HSMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSMessage.h; sourceTree = "<group>"; };
+		5E911899F9E8776B0E53BF41 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = README.md; sourceTree = "<group>"; };
+		5E9118A4B5C002831CAAE546 /* ReadMe.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ReadMe.txt; sourceTree = "<group>"; };
+		5E9119372D9A885B427291E2 /* chipKIT.mk */ = {isa = PBXFileReference; lastKnownFileType = file.mk; path = chipKIT.mk; sourceTree = "<group>"; };
+		5E9119EFD081389D311742DC /* twi.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = twi.c; sourceTree = "<group>"; };
+		5E911A0BF506B23E3090AB09 /* webutil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = webutil.cpp; sourceTree = "<group>"; };
+		5E911A73782E614D2A5ABB00 /* Wire.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wire.cpp; sourceTree = "<group>"; };
+		5E911B00694110797C4F343E /* HISTORY.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = HISTORY.md; sourceTree = "<group>"; };
+		5E911B90AF94B8129F1475CE /* enc28j60.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enc28j60.h; sourceTree = "<group>"; };
+		5E911BF721570D38066D8240 /* arduino-mk-vars.md */ = {isa = PBXFileReference; lastKnownFileType = file.md; path = "arduino-mk-vars.md"; sourceTree = "<group>"; };
+		5E911CDE9B07FF88931914EC /* Common.mk */ = {isa = PBXFileReference; lastKnownFileType = file.mk; path = Common.mk; sourceTree = "<group>"; };
+		5E911D5221F7288774888899 /* Doxyfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
+		5E911D5B885273F03DDA7A2A /* Time.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Time.cpp; sourceTree = "<group>"; };
+		5E911D8DA40FEC2E1CA80D57 /* Readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Readme.txt; sourceTree = "<group>"; };
+		5E911DD660CB62EB1BFA0CF0 /* ard-reset-arduino.1 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.man; path = "ard-reset-arduino.1"; sourceTree = "<group>"; };
+		5E911E302748058E009E2A43 /* MCP79412RTC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCP79412RTC.h; sourceTree = "<group>"; };
+		5E911EFBD0683CA30915408F /* Wire.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wire.h; sourceTree = "<group>"; };
+		5E911F22F2FE8ABBB18ED211 /* common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = common.h; sourceTree = "<group>"; };
+		5E911F79AEA321AAA9A582A2 /* Doxylogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Doxylogo.png; sourceTree = "<group>"; };
+		5E911FDA0DB6C4048611A846 /* Doxymods.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = Doxymods.css; sourceTree = "<group>"; };
+		5E911FF7B5F2E2DF0BAC77D0 /* EtherCard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EtherCard.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		5E9111597CA0644D9B3DE162 /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				5E9113AECBEF5E0F63EE9210 /* ard-reset-arduino */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		5E91116DF655CD2FF24F0257 /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				5E9115000AD4401656B59CD9 /* Time */,
+				5E911E1B1C1CAF29A903DF01 /* Wire */,
+				5E9112101693F7261A246BD2 /* EtherCard */,
+				5E911AA92A89B59DC1A51A53 /* MCP79412RTC */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		5E9112101693F7261A246BD2 /* EtherCard */ = {
+			isa = PBXGroup;
+			children = (
+				5E9115531EDA83802CFD78A1 /* net.h */,
+				5E911845EE20CE3D67E6C329 /* dns.cpp */,
+				5E911617BDFB1E73029FF5E6 /* dhcp.cpp */,
+				5E911D5221F7288774888899 /* Doxyfile */,
+				5E911899F9E8776B0E53BF41 /* README.md */,
+				5E9116433FD17128FA7A048F /* tcpip.cpp */,
+				5E911B90AF94B8129F1475CE /* enc28j60.h */,
+				5E91123BAC48C05036C04469 /* EtherCard.h */,
+				5E911A0BF506B23E3090AB09 /* webutil.cpp */,
+				5E911F79AEA321AAA9A582A2 /* Doxylogo.png */,
+				5E911FDA0DB6C4048611A846 /* Doxymods.css */,
+				5E911219AE507E500E1E8FDA /* enc28j60.cpp */,
+				5E911FF7B5F2E2DF0BAC77D0 /* EtherCard.cpp */,
+				5E911695B4920A76D1B0D7FE /* udpserver.cpp */,
+			);
+			path = EtherCard;
+			sourceTree = "<group>";
+		};
+		5E9112A0CB030AE7514F290C = {
+			isa = PBXGroup;
+			children = (
+				5E911497CF6D6B3F4E18FC30 /* Products */,
+				5E91116DF655CD2FF24F0257 /* lib */,
+				5E911987E007A95F42076FEA /* make */,
+				5E9111BB0C2F4852633838E6 /* Makefile */,
+				5E91174C36C899DF1A47E07D /* src */,
+			);
+			sourceTree = "<group>";
+		};
+		5E911497CF6D6B3F4E18FC30 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E9115000AD4401656B59CD9 /* Time */ = {
+			isa = PBXGroup;
+			children = (
+				5E91150352445ACE692B99F0 /* Time.h */,
+				5E911D5B885273F03DDA7A2A /* Time.cpp */,
+				5E911D8DA40FEC2E1CA80D57 /* Readme.txt */,
+				5E91113787402FA990994272 /* keywords.txt */,
+			);
+			path = Time;
+			sourceTree = "<group>";
+		};
+		5E91174C36C899DF1A47E07D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				5E911240E07E72448FBAFF1A /* config.h */,
+				5E911F22F2FE8ABBB18ED211 /* common.h */,
+				5E9118508FAE0CD61487E92E /* main.cpp */,
+				5E91186D3DD0F6EE962BCCE6 /* HSMessage.h */,
+				5E91130B597848DD5F1DB9CE /* HSMessage.cpp */,
+				26E2A57E1983F503000C92EB /* hs_config.h */,
+				26E2A57D1983F503000C92EB /* hs_config.cpp */,
+				26E2A58019843A71000C92EB /* dbg.h */,
+				26E2A57F19843A71000C92EB /* dbg.cpp */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		5E911987E007A95F42076FEA /* make */ = {
+			isa = PBXGroup;
+			children = (
+				5E911DD660CB62EB1BFA0CF0 /* ard-reset-arduino.1 */,
+				5E9110F1C21FDC42B42702BE /* README.md */,
+				5E911B00694110797C4F343E /* HISTORY.md */,
+				5E91175C7A9E15EA7D964298 /* licence.txt */,
+				5E91179AE67A7D7206048A00 /* CONTRIBUTING.md */,
+				5E911CDE9B07FF88931914EC /* Common.mk */,
+				5E9111597CA0644D9B3DE162 /* bin */,
+				5E9119372D9A885B427291E2 /* chipKIT.mk */,
+				5E9115267F859196BECE974E /* Arduino.mk */,
+				5E911BF721570D38066D8240 /* arduino-mk-vars.md */,
+			);
+			path = make;
+			sourceTree = "<group>";
+		};
+		5E911AA92A89B59DC1A51A53 /* MCP79412RTC */ = {
+			isa = PBXGroup;
+			children = (
+				5E9110B0266395F3C33CEFC0 /* ReadMe.md */,
+				5E9115DF04E9CC69CE9050E7 /* LICENSE.md */,
+				5E9118A4B5C002831CAAE546 /* ReadMe.txt */,
+				5E91107FE200566F272B28B6 /* keywords.txt */,
+				5E911E302748058E009E2A43 /* MCP79412RTC.h */,
+				5E91140F3961516D8A0B5ED0 /* MCP79412RTC.cpp */,
+			);
+			path = MCP79412RTC;
+			sourceTree = "<group>";
+		};
+		5E911E1B1C1CAF29A903DF01 /* Wire */ = {
+			isa = PBXGroup;
+			children = (
+				5E911EFBD0683CA30915408F /* Wire.h */,
+				5E911F72BD03833CA27CD9CA /* utility */,
+				5E911A73782E614D2A5ABB00 /* Wire.cpp */,
+				5E9115ECB655E082E3666CDB /* keywords.txt */,
+			);
+			path = Wire;
+			sourceTree = "<group>";
+		};
+		5E911F72BD03833CA27CD9CA /* utility */ = {
+			isa = PBXGroup;
+			children = (
+				5E9119EFD081389D311742DC /* twi.c */,
+				5E9116E5791BE7868789ECEF /* twi.h */,
+			);
+			path = utility;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		5E911B4C4FD777AE62F8A09A /* HeklaSysNode */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = 5E911AAD6F1C218862BCA46D /* Build configuration list for PBXLegacyTarget "HeklaSysNode" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			dependencies = (
+			);
+			name = HeklaSysNode;
+			passBuildSettingsInEnvironment = 1;
+			productName = HeklaSysNode;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		5E91114743E855896F282DDE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = HS;
+				ORGANIZATIONNAME = Hejki;
+			};
+			buildConfigurationList = 5E9112673E42D9A747286ABD /* Build configuration list for PBXProject "Node" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 5E9112A0CB030AE7514F290C;
+			productRefGroup = 5E911497CF6D6B3F4E18FC30 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E911B4C4FD777AE62F8A09A /* HeklaSysNode */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		5E91114658E305150E420897 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/Users/hejki/Documents/workspace-home/HeklaSys/node/lib/**",
+					/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standard,
+					/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino,
+					/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standard,
+					"/Users/hejki/Documents/workspace-home/HeklaSys/node/lib/**",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		5E911AD6E2F1E9E6A245F923 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					"/Users/hejki/Documents/workspace-home/HeklaSys/node/lib/**",
+					/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standard,
+					/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino,
+					/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standard,
+					"/Users/hejki/Documents/workspace-home/HeklaSys/node/lib/**",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		5E911D54BDC82D7A492CE844 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				HEADER_SEARCH_PATHS = "/Users/hejki/Documents/workspace-home/HeklaSys/node /Users/hejki/Documents/workspace-home/HeklaSys/node/lib/** /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standard /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5E911D6C476C29C2F29B6EE2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = "/Users/hejki/Documents/workspace-home/HeklaSys/node /Users/hejki/Documents/workspace-home/HeklaSys/node/lib/** /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standard /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino";
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E9112673E42D9A747286ABD /* Build configuration list for PBXProject "Node" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E911AD6E2F1E9E6A245F923 /* Debug */,
+				5E91114658E305150E420897 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E911AAD6F1C218862BCA46D /* Build configuration list for PBXLegacyTarget "HeklaSysNode" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E911D54BDC82D7A492CE844 /* Debug */,
+				5E911D6C476C29C2F29B6EE2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E91114743E855896F282DDE /* Project object */;
+}

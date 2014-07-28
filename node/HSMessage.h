@@ -9,18 +9,31 @@
 #ifndef HSMESSAGE_H_
 #define HSMESSAGE_H_
 
-#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "common.h"
 
-#define MSG_MIN_LENGTH 			4
-#define MSG_DATA_POS			3
+#define HS_MESSAGE_TYPE_OK                  0
+#define HS_MESSAGE_TYPE_ERROR               1
 
-#define ERR_UNSUPPORTED_MSG		0
-#define ERR_INVALID_CHECKSUM	1
-#define ERR_NOT_IMPLEMENTED_MSG	2
-#define ERR_MSG_INCORRECT_IMPL  3
-#define ERR_BAD_MSG_LENGTH      4
+#define HS_MESSAGE_TYPE_PING                10
+#define HS_MESSAGE_TYPE_GET_SRV_SETTING     11
+#define HS_MESSAGE_TYPE_SET_SRV_SETTING     12
+#define HS_MESSAGE_TYPE_GET_NODE_SETTING    13
+#define HS_MESSAGE_TYPE_SET_NODE_SETTING    14
+#define HS_MESSAGE_TYPE_GET_PIN_SETTING     15
+#define HS_MESSAGE_TYPE_SET_PIN_SETTING     16
+
+#define HS_MESSAGE_TYPE_DIGITAL_READ        20
+#define HS_MESSAGE_TYPE_DIGITAL_WRITE       21
+#define HS_MESSAGE_TYPE_ANALOG_READ         22
+#define HS_MESSAGE_TYPE_ANALOG_WRITE        23
+
+#define HS_MESSAGE_ERR_UNSUPPORTED_MSG      0
+#define HS_MESSAGE_ERR_INVALID_CHECKSUM		1
+#define HS_MESSAGE_ERR_NOT_IMPLEMENTED_MSG  2
+#define HS_MESSAGE_ERR_MSG_INCORRECT_IMPL  	3
+#define HS_MESSAGE_ERR_BAD_MSG_LENGTH      	4
 
 class HSMessage {
 protected:
@@ -46,10 +59,12 @@ public:
 	void process();
 
 	const char *getReply() { return replyBegin; }
-	const uint8_t getReplySize() { return replyLength; }
+	uint8_t getReplySize() { return replyLength; }
 
-protected:
+private:
 	void prepareReply(uint8_t type, uint8_t len);
+	
+protected:
 	void prepareOkReply(uint8_t len);
 	void createErrReply(uint8_t errorCode);
 
@@ -60,7 +75,7 @@ protected:
 };
 
 
-#pragma mark - HSErrorMessage (1)
+// HSErrorMessage (HS_MESSAGE_TYPE_ERROR)
 class HSErrorMessage : public HSMessage {
 	uint8_t errorCode;
 
@@ -69,13 +84,13 @@ public:
 	void processInternal();
 };
 
-#pragma mark - HSPingMessage (10)
+// HSPingMessage (HS_MESSAGE_TYPE_PING)
 class HSPingMessage : public HSMessage {
 public:
 	void processInternal();
 };
 
-#pragma mark - HSAnalogReadMessage (22)
+// HSAnalogReadMessage (HS_MESSAGE_TYPE_ANALOG_READ)
 class HSAnalogReadMessage : public HSMessage {
 	uint8_t pin;
 

@@ -22,12 +22,13 @@ AVR_TOOLS_DIR     = /opt/local
 
 ### Path to avrdude directory.
 AVRDDUDE          = /opt/local/bin/avrdude
-AVRDUDE_OPTS	  = -v
+#AVRDUDE_OPTS	  = -v
 AVRDUDE_ARD_BAUDRATE= 115200
 AVRDUDE_ARD_PROGRAMMER= arduino
 
 ### Flags you might want to set for debugging purpose. Comment to stop.
-CPPFLAGS         = -pedantic -Wall -Wextra -Wno-unknown-pragmas -Wno-variadic-macros 
+CPPFLAGS          = -Wall -Wextra -std=c++11
+#-Wno-variadic-macros
 
 ### The port your board is connected to. Using an '*' tries all the ports and finds the right one.
 MONITOR_PORT      = /dev/tty.usbserial*

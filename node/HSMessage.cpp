@@ -1,11 +1,12 @@
 #include "HSMessage.h"
-#include <Arduino.h>
+
+#define MSG_MIN_LENGTH              4
+#define MSG_DATA_POS                3
 
 static uint8_t calculateChecksum(uint8_t type, uint8_t length, uint8_t msgId, const char *data) {
 	uint8_t checksum = (uint8_t) (type + length + msgId);
 
 	for (int i = MSG_DATA_POS; i < length + MSG_DATA_POS; i++) {
-		Serial.println(data[i] & 0xFF);
 		checksum += (uint8_t) data[i] & 0xFF;
 	}
 	return 256 - checksum;
@@ -16,26 +17,29 @@ HSMessage::~HSMessage(void) {
 }
 
 HSMessage *HSMessage::createMessage(uint8_t type, uint8_t length, uint8_t msgId, uint8_t checksum, const char *data) {
+#ifndef NO_CRC_CHECK
 	// check checksum
 	if (checksum != calculateChecksum(type, length, msgId, data)) {
+		LOG("Invalid crc=%x, correct=%x", checksum, calculateChecksum(type, length, msgId, data));
 		return new HSErrorMessage(ERR_INVALID_CHECKSUM);
 	}
+#endif
 
 	// create message
 	HSMessage *msg;
 	switch (type) {
-	case 10: // ping
+	case HS_MESSAGE_TYPE_PING: // ping
 		msg = new HSPingMessage();
 		break;
-	case 22: // analog read
+	case HS_MESSAGE_TYPE_ANALOG_READ: // analog read
 		if (length != 1) {
-			return new HSErrorMessage(ERR_BAD_MSG_LENGTH);
+			return new HSErrorMessage(HS_MESSAGE_ERR_BAD_MSG_LENGTH);
 		}
 		msg = new HSAnalogReadMessage(data[0]);
 		break;
 
 	default:
-		return new HSErrorMessage(ERR_UNSUPPORTED_MSG);
+		return new HSErrorMessage(HS_MESSAGE_ERR_UNSUPPORTED_MSG);
 	}
 
 	msg->id = msgId;
@@ -43,12 +47,12 @@ HSMessage *HSMessage::createMessage(uint8_t type, uint8_t length, uint8_t msgId,
 }
 
 void HSMessage::process() {
-	Serial.println("Process message");
+	dbg("Process message");
 	processInternal();
 
 	if (!replyBegin || replyPtr != (replyBegin + replyLength -1)) {
 		if (replyBegin) delete[] replyBegin;
-		createErrReply(ERR_MSG_INCORRECT_IMPL);
+		createErrReply(HS_MESSAGE_ERR_MSG_INCORRECT_IMPL);
 	}
 
 	*replyPtr = calculateChecksum(replyBegin[0],
@@ -56,27 +60,26 @@ void HSMessage::process() {
 }
 
 void HSMessage::processInternal() {
-	createErrReply(ERR_NOT_IMPLEMENTED_MSG);
+	createErrReply(HS_MESSAGE_ERR_NOT_IMPLEMENTED_MSG);
 }
 
 void HSMessage::prepareReply(uint8_t type, uint8_t len) {
 	replyLength = len + MSG_MIN_LENGTH;
 	replyBegin = new char[replyLength];
-	replyBegin[0] = 0;
+	replyBegin[0] = type;
 	replyBegin[1] = len;
 	replyBegin[2] = id;
 	replyPtr = replyBegin + 3;
 }
 
 void HSMessage::prepareOkReply(uint8_t len) {
-	prepareReply(0, len);
+	prepareReply(HS_MESSAGE_TYPE_OK, len);
 }
 
 void HSMessage::createErrReply(uint8_t errorCode) {
-	Serial.print("Create err reply, code: ");
-	Serial.println(errorCode);
+    dbg("Create err reply, code: %x", errorCode);
 
-	prepareReply(1, 1);
+	prepareReply(HS_MESSAGE_TYPE_ERROR, 1);
 	*replyPtr = errorCode;
 	replyPtr++;
 }
@@ -90,23 +93,20 @@ void HSMessage::append2Byte(uint16_t i) {
 	*replyPtr++ = ((i >> 8) & 0xFF);
 }
 
-#pragma mark - HSErrorMessage (1)
-
+// HSErrorMessage (HS_MESSAGE_TYPE_ERROR)
 void HSErrorMessage::processInternal() {
 	createErrReply(errorCode);
 }
 
-#pragma mark - HSPingMessage (10)
-
+// HSPingMessage (HS_MESSAGE_TYPE_PING)
 void HSPingMessage::processInternal() {
-	Serial.println("Process internal on PingMessage");
+    dbg("Process internal on PingMessage");
 	prepareOkReply(0);
 }
 
-#pragma mark - HSAnalogReadMessage (22)
-
+// HSAnalogReadMessage (HS_MESSAGE_TYPE_ANALOG_READ)
 void HSAnalogReadMessage::processInternal() {
-	Serial.println("Process internal on AnalogReadMessage");
+    dbg("Process internal on AnalogReadMessage");
 	uint16_t value = analogRead(this->pin);
 
 	prepareOkReply(2);
