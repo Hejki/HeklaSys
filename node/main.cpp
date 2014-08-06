@@ -40,7 +40,7 @@ bool hs_setup() {
     
 #if NO_RTC
     byte macAddress[] = HS_MAC_ADDRESS;
-    if (ether.begin(sizeof Ethernet::buffer, macAddress) == 0) {
+    if (ether.begin(sizeof Ethernet::buffer, macAddress, NET_CS_PIN) == 0) {
         LOG("Cannot init ether card with static MAC address.");
         return false;
     }

@@ -26,3 +26,5 @@
 #if NO_RTC
 #define HS_MAC_ADDRESS { 0x74, 0x69, 0x69, 0x2D, 0x30, 0x31 }
 #endif
+
+#define NET_CS_PIN              8
