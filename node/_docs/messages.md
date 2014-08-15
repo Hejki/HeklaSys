@@ -31,11 +31,15 @@
 * 0 Unsupported message
 * 1 Invalid checksum
 
-## 2 - Heartbeat
-* pro informaci ze zarizeni stale bezi
+## 2 - Pin Value
+* message from node with information about pin value (based on pin configuration)
+* data: 2 byte value
 
+## 3 - Node Info after reset
+* message from node with information about node setting
+* data same as response to message 17
 
-## 3-9 rezervovano
+## 4-9 reserved
 
 ## 10 - Ping
 _Request:_ empty
@@ -102,6 +106,15 @@ _Request:_ `<PIN_INDEX><NUM><TYPE><CONF>`
 * CONF - additional configuration
 
 _Response:_ OK (empty)
+
+## 17 - Get Info
+_Request:_ empty
+
+_Response:_ OK (localip, locaport) 
+
+`<ip1><ip2><ip3><ip4><portL><portH>`
+* IP - server ip address bytes (ip1.ip2.ip3.ip4)
+* PORT - 2bytes of server port
 
 ## 20 - Digital Read
 _Request:_ `<PIN>`
