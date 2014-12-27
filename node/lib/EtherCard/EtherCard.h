@@ -150,7 +150,7 @@ public:
 
   // EtherCard.cpp
   static uint8_t begin (const uint16_t size, const uint8_t* macaddr,
-                        uint8_t csPin =8);  
+                        uint8_t csPin =9);
   static bool staticSetup (const uint8_t* my_ip =0,
                             const uint8_t* gw_ip =0,
                              const uint8_t* dns_ip =0);

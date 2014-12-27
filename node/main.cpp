@@ -6,26 +6,20 @@
 #include "HSMessage.h"
 
 byte Ethernet::buffer[HS_ETHERNET_BUF_SIZE];
-
-uint16_t udpLocalPort = HS_DEF_UDP_LOCAL_PORT;
-uint16_t udpRemotePort = HS_DEF_UDP_SERVER_PORT;
-uint8_t  udpRemoteIp[4] = HS_DEF_UDP_SERVER_IP;
 DeviceState status;
-HSConfiguration config;
 
 bool hs_setup();
 void hs_loop();
 void hs_udpReceive(word port, byte ip[4], const char *data, word len);
 bool hs_checkSendInterval();
 void hs_processPins();
-float hs_read_temperature(uint8_t pin);
-float hs_read_humidity(uint8_t pin);
+void hs_switch(HSPinConf *pin);
 
 int main(void) {
 	init();
 
     if (!hs_setup()) {
-        dbg("Init fail");
+//        dbg("Init fail");
         return 0;
     }
     
@@ -36,132 +30,147 @@ int main(void) {
 }
 
 bool hs_setup() {
+#ifdef DEBUG
     Debug.begin();
+#endif
     
-#if NO_RTC
+#ifdef NO_RTC
     byte macAddress[] = HS_MAC_ADDRESS;
     if (ether.begin(sizeof Ethernet::buffer, macAddress, NET_CS_PIN) == 0) {
-        LOG("Cannot init ether card with static MAC address.");
+//        dbg("Cannot init ether card with static MAC address.");
         return false;
     }
 #else
     // RTC
     if (!RTC.isRunning()) {
-        dbg("RTC was not running set default time");
+//        dbg("RTC was not running set default time");
         setTime(0, 0, 0, 1, 1, 0); // 1.1.2000 00:00:00
         RTC.set(now());
         RTC.vbaten(true);
     }
-    
+
     setSyncProvider(RTC.get);
     if (timeStatus() != timeSet) {
-        dbg("Unable to sync with the RTC");
+//        dbg("Unable to sync with the RTC");
         return false;
     }
-    
+
     // MAC address and Ethernet setup
     uint8_t rtcId[8];
     RTC.idRead(rtcId);
-    if (ether.begin(sizeof Ethernet::buffer, rtcId) == 0) {
-        dbg("Cannot init ether card with MAC: %x:%x:%x:%x:%x:%x",
-            rtcId[0], rtcId[1], rtcId[2], rtcId[3], rtcId[4], rtcId[5], rtcId[6]);
+
+    if (ether.begin(sizeof Ethernet::buffer, rtcId, NET_CS_PIN) == 0) {
+//        dbg("Cannot init ether card with MAC: %x:%x:%x:%x:%x:%x",
+//            rtcId[0], rtcId[1], rtcId[2], rtcId[3], rtcId[4], rtcId[5], rtcId[6]);
         return false;
     }
 #endif
     
     if (!ether.dhcpSetup()) {
-        dbg("DHCP failed.");
-    } else {
-        dbg("IP: %d.%d.%d.%d", ether.myip[0], ether.myip[1], ether.myip[2], ether.myip[3]);
+        return false;
     }
     
-    ether.udpServerListenOnPort(&hs_udpReceive, udpLocalPort);
+//    dbg("IP: %d.%d.%d.%d", ether.myip[0], ether.myip[1], ether.myip[2], ether.myip[3]);
     
-    hs_config_init(&config);
-    dbg("Config: %d, %d, %d", config.statusSendInterval, config.statusSendTimeUnit, config.numberOfPinPositions);
+    ether.udpServerListenOnPort(&hs_udpReceive, HS_DEF_UDP_SERVER_PORT);
+    
+    hs_config_init();
+    status.lastSendTime = 0;
     
     return true;
 }
 
 void hs_loop() {
-//    ether.packetLoop(ether.packetReceive());
-    hs_processPins();
+    ether.packetLoop(ether.packetReceive());
+    
+    if (!status.settingsMode) {
+        hs_processPins();
+    }
 }
 
+
 void hs_udpReceive(word port, byte ip[4], const char *data, word msgLength) {
-    dbg("%d.%d.%d.%d:%d, len: %d", ip[0], ip[1], ip[2], ip[3], port, msgLength);
+//    dbg("%d.%d.%d.%d:%d, len: %d", ip[0], ip[1], ip[2], ip[3], port, msgLength);
     
     uint8_t messageLength = (msgLength & 0xFF);
     if (messageLength >= 3) {
+        HSMessage *message = NULL;
         uint8_t type = data[0];
         uint8_t length = data[1];
         uint8_t id = data[2];
         
         if (messageLength != (length + 4)) {
-            // error message bad length
-            dbg("Bad message length, expect (%d + 4) but was %d", length, messageLength);
-            return;
+            message = new HSErrorMessage(HS_MESSAGE_ERR_BAD_MSG_LENGTH);
         }
         
-        uint8_t crc = data[messageLength - 1];
+        if (!message) {
+            uint8_t crc = data[messageLength - 1];
         
-        // Info
-        dbg("t: %d, l: %d, id: %d, crc: %d", type, length, id, crc);
+//            dbg("t: %d, l: %d, id: %d, crc: %d", type, length, id, crc);
+            message = HSMessage::createMessage(type, length, id, crc, data);
+        }
         
-        HSMessage *message = HSMessage::createMessage(type, length, id, crc, data);
-        
-        message->process();
-        ether.sendUdp(message->getReply(), message->getReplySize(), udpLocalPort, udpRemoteIp, udpRemotePort);
-        
-        delete message;
+        if (message) {
+            message->send(ip);
+            delete message;
+        }
     }
 }
 
 bool hs_checkSendInterval() {
     time_t lastSendDelay = now() - status.lastSendTime;
-    if (config.statusSendTimeUnit == HS_CONFIG_TIME_UNIT_MINUTE) {
+    
+    if (hs_node_config.statusSendTimeUnit == HS_CONFIG_TIME_UNIT_MINUTE) {
         lastSendDelay /= 60;
-    } else if (config.statusSendTimeUnit == HS_CONFIG_TIME_UNIT_HOUR) {
+    } else if (hs_node_config.statusSendTimeUnit == HS_CONFIG_TIME_UNIT_HOUR) {
         lastSendDelay /= 3600;
     }
     
-    return config.statusSendInterval > 0 && lastSendDelay > config.statusSendInterval;
+    return hs_node_config.statusSendInterval > 0 && lastSendDelay >= hs_node_config.statusSendInterval;
 }
 
 void hs_processPins() {
     bool check = hs_checkSendInterval();
     
-    dbg("Process pins (conf: %d, %d, %d, %d)", config.statusSendInterval, config.statusSendTimeUnit, config.numberOfPinPositions, check);
-    for (uint8_t i = 0; i < config.numberOfPinPositions; i++) {
-        HSPinConf pin;
+//    dbg("si: %d, u: %d, p: %d, lt: %ld", hs_node_config.statusSendInterval, hs_node_config.statusSendTimeUnit, hs_node_config.numberOfPinPositions, status.lastSendTime);
+    
+    for (uint8_t i = 0; i < hs_node_config.numberOfPinPositions; i++) {
+        HSPinConf pin = hs_pin_configurations[i];
+        HSMessage *message = NULL;
         
-        hs_config_read_pin(i, &pin);
-        dbg("Pin: %d, type: %d", pin.number, pin.type);
+//        if (pin.type != 0) {
+//            dbg("n: %d, t: %d, c: %d", pin.number, pin.type, pin.config);
+//        }
         
         switch (pin.type) {
             case HS_CONFIG_PIN_TYPE_READ_D:
-                dbg("- digital: %d", digitalRead(pin.number));
-                break;
             case HS_CONFIG_PIN_TYPE_READ_A:
-                dbg("- analog: %d", analogRead(pin.number));
-                break;
-            case HS_CONFIG_PIN_TYPE_SWITCH:
-                dbg("- switch: %d", digitalRead(pin.number));
-                break;
             case HS_CONFIG_PIN_TYPE_TEMP:
-                dbg("- temperature: %f˚C", hs_read_temperature(pin.number));
+                if (check) {
+                    message = new HSValueMessage(i, hs_config_get_pin_value(i));
+                }
                 break;
-            case HS_CONFIG_PIN_TYPE_HUM:
-                dbg("- humidity: %f", hs_read_humidity(pin.number));
+                
+            case HS_CONFIG_PIN_TYPE_SWITCH:
+                hs_switch(&pin);
                 break;
         }
+        
+        if (message) {
+            message->send(NULL);
+            delete message;
+        }
+    }
+    
+    if (check) {
+        status.lastSendTime = now();
     }
 }
 
-float hs_read_temperature(uint8_t pin) {
-    return 18.5;
-}
-
-float hs_read_humidity(uint8_t pin) {
-    return 0;
+void hs_switch(HSPinConf *pin) {
+    uint8_t dependPin = pin->config & 0xF;
+    uint8_t switchHigh = (pin->config & 0x10) >> 4;
+    uint8_t switchOn = digitalRead(pin->number);
+    
+    digitalWrite(dependPin, switchHigh == switchOn);
 }

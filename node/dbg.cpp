@@ -5,16 +5,11 @@
 
 #define DBG_MAX_LENGTH  80
 
-Dbg::Dbg() {
-}
-
-void Dbg::begin()
-{
+void Dbg::begin() {
     Serial.begin(9600);
 }
 
-void Dbg::log(const char *fmt, ...)
-{
+void Dbg::log(const char *fmt, ...) {
     char buf[DBG_MAX_LENGTH];
     
     va_list ap;
@@ -25,6 +20,6 @@ void Dbg::log(const char *fmt, ...)
     Serial.println(buf);
 }
 
-#endif
-
 Dbg Debug;
+
+#endif

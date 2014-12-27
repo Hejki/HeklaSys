@@ -9,6 +9,9 @@
 
 struct DeviceState {
     time_t lastSendTime;
+    bool settingsMode;
 };
+
+extern DeviceState status;
 
 #endif /* HSCOMMON_H_ */

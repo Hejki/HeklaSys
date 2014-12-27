@@ -8,7 +8,7 @@ PROJECT_DIR       = $(CURDIR)
 ARDMK_DIR         = $(PROJECT_DIR)/make
 
 ### Path to the Arduino application and ressources directory.
-ARDUINO_DIR       = /Applications/Development/Arduino.app/Contents/Resources/Java
+ARDUINO_DIR       = /Applications/Arduino.app/Contents/Java
 
 ### Path to where the your project's libraries are stored.
 USER_LIB_PATH     :=  $(PROJECT_DIR)/lib
@@ -18,7 +18,7 @@ BOARD_TAG         = uno
 MONITOR_BAUDRATE  = 115200
 
 ### Path to the AVR tools directory such as avr-gcc, avr-g++, etc.
-AVR_TOOLS_DIR     = /opt/local
+AVR_TOOLS_DIR     = /usr/local
 
 ### Path to avrdude directory.
 AVRDDUDE          = /opt/local/bin/avrdude
@@ -43,7 +43,7 @@ TARGET			  = HeklaSysNode
 OPTIMIZATION_LEVEL= s
 #RESET_CMD		  = stty -f $(MONITOR_PORT) hupcl
 # ARDUINO_QUIET     = 1
-ARDUINO_LIBS	  = Time EtherCard MCP79412RTC Wire
+ARDUINO_LIBS	  = Time EtherCard MCP79412RTC Wire OneWire DallasTemperature
 
 ### path to Arduino.mk, inside the ARDMK_DIR, don't touch.
 include $(ARDMK_DIR)/Arduino.mk

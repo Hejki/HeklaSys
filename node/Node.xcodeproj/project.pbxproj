@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXFileReference section */
+		262B766A199292FB00F16D98 /* messages.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = messages.md; sourceTree = "<group>"; };
+		262B766B199292FB00F16D98 /* setting.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = setting.md; sourceTree = "<group>"; };
+		2693B3351A4EE6B70009F47F /* change.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = change.txt; sourceTree = "<group>"; };
+		2693B3361A4EE6B70009F47F /* DallasTemperature.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = DallasTemperature.cpp; sourceTree = "<group>"; };
+		2693B3371A4EE6B70009F47F /* DallasTemperature.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DallasTemperature.h; sourceTree = "<group>"; };
+		2693B3491A4EE6B70009F47F /* keywords.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		2693B34A1A4EE6B70009F47F /* README.TXT */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.TXT; sourceTree = "<group>"; };
+		2693B3531A4EE6B70009F47F /* keywords.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = keywords.txt; sourceTree = "<group>"; };
+		2693B3541A4EE6B70009F47F /* OneWire.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OneWire.cpp; sourceTree = "<group>"; };
+		2693B3551A4EE6B70009F47F /* OneWire.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OneWire.h; sourceTree = "<group>"; };
 		26E2A57D1983F503000C92EB /* hs_config.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = hs_config.cpp; sourceTree = "<group>"; };
 		26E2A57E1983F503000C92EB /* hs_config.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = hs_config.h; sourceTree = "<group>"; };
 		26E2A57F19843A71000C92EB /* dbg.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = dbg.cpp; sourceTree = "<group>"; };
@@ -59,6 +69,37 @@
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
+		262B7669199292FB00F16D98 /* _docs */ = {
+			isa = PBXGroup;
+			children = (
+				262B766A199292FB00F16D98 /* messages.md */,
+				262B766B199292FB00F16D98 /* setting.md */,
+			);
+			path = _docs;
+			sourceTree = "<group>";
+		};
+		2693B3341A4EE6B70009F47F /* DallasTemperature */ = {
+			isa = PBXGroup;
+			children = (
+				2693B3351A4EE6B70009F47F /* change.txt */,
+				2693B3361A4EE6B70009F47F /* DallasTemperature.cpp */,
+				2693B3371A4EE6B70009F47F /* DallasTemperature.h */,
+				2693B3491A4EE6B70009F47F /* keywords.txt */,
+				2693B34A1A4EE6B70009F47F /* README.TXT */,
+			);
+			path = DallasTemperature;
+			sourceTree = "<group>";
+		};
+		2693B34B1A4EE6B70009F47F /* OneWire */ = {
+			isa = PBXGroup;
+			children = (
+				2693B3531A4EE6B70009F47F /* keywords.txt */,
+				2693B3541A4EE6B70009F47F /* OneWire.cpp */,
+				2693B3551A4EE6B70009F47F /* OneWire.h */,
+			);
+			path = OneWire;
+			sourceTree = "<group>";
+		};
 		5E9111597CA0644D9B3DE162 /* bin */ = {
 			isa = PBXGroup;
 			children = (
@@ -70,10 +111,12 @@
 		5E91116DF655CD2FF24F0257 /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				5E9115000AD4401656B59CD9 /* Time */,
-				5E911E1B1C1CAF29A903DF01 /* Wire */,
+				2693B3341A4EE6B70009F47F /* DallasTemperature */,
 				5E9112101693F7261A246BD2 /* EtherCard */,
 				5E911AA92A89B59DC1A51A53 /* MCP79412RTC */,
+				2693B34B1A4EE6B70009F47F /* OneWire */,
+				5E9115000AD4401656B59CD9 /* Time */,
+				5E911E1B1C1CAF29A903DF01 /* Wire */,
 			);
 			path = lib;
 			sourceTree = "<group>";
@@ -102,10 +145,11 @@
 		5E9112A0CB030AE7514F290C = {
 			isa = PBXGroup;
 			children = (
-				5E911497CF6D6B3F4E18FC30 /* Products */,
+				262B7669199292FB00F16D98 /* _docs */,
 				5E91116DF655CD2FF24F0257 /* lib */,
 				5E911987E007A95F42076FEA /* make */,
 				5E9111BB0C2F4852633838E6 /* Makefile */,
+				5E911497CF6D6B3F4E18FC30 /* Products */,
 				5E91174C36C899DF1A47E07D /* src */,
 			);
 			sourceTree = "<group>";
@@ -336,7 +380,7 @@
 			buildSettings = {
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = "/Users/hejki/Documents/workspace-home/HeklaSys/node /Users/hejki/Documents/workspace-home/HeklaSys/node/lib/** /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standard /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino";
+				HEADER_SEARCH_PATHS = "/Users/hejki/Documents/workspace-home/HeklaSys/nodeu2028/Users/hejki/Documents/workspace-home/HeklaSys/node/lib/**u2028/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standardu2028/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -346,7 +390,7 @@
 		5E911D6C476C29C2F29B6EE2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				HEADER_SEARCH_PATHS = "/Users/hejki/Documents/workspace-home/HeklaSys/node /Users/hejki/Documents/workspace-home/HeklaSys/node/lib/** /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standard /Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino";
+				HEADER_SEARCH_PATHS = "/Users/hejki/Documents/workspace-home/HeklaSys/nodeu2028/Users/hejki/Documents/workspace-home/HeklaSys/node/lib/**u2028/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/variants/standardu2028/Applications/Development/Arduino.app/Contents/Resources/Java/hardware/arduino/avr/cores/arduino";
 				OTHER_CFLAGS = "";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";

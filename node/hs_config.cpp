@@ -5,6 +5,7 @@
 //  Created by Hejki on 26.07.14.
 //  Copyright (c) 2014 Hejki. All rights reserved.
 //
+#include <DallasTemperature.h>
 
 #include "hs_config.h"
 #include <avr/eeprom.h> // http://www.nongnu.org/avr-libc/user-manual/group__avr__eeprom.html
@@ -59,25 +60,129 @@ const uint8_t hs_config_addr_pin[] = {
 };
 
 const uint8_t _hsConfigAddressOffset = 1;
+HSConfiguration hs_node_config;
+HSPinConf hs_pin_configurations[HS_CONFIG_PIN_LENGTH];
+void *hs_pin_config_objects[HS_CONFIG_PIN_LENGTH];
 
 inline uint8_t hs_config_addr(const uint8_t configAddress) {
     return _hsConfigAddressOffset + configAddress;
 }
 
-void hs_config_init(HSConfiguration *config) {
-    eeprom_busy_wait();
-    
-//    _hsConfigAddressOffset = eeprom_read_byte(0);
-    
-    eeprom_read_block(config,
-                      (const void *) hs_config_addr(hs_config_addr_config),
-                      sizeof(HSConfiguration));
-}
-
-void hs_config_read_pin(uint8_t pinIndex, HSPinConf *pinConfig) {
+/**
+ *  Read configuration for specified pin.
+ *
+ *  @param pinIndex  index of pin in configuration
+ *  @param pinConfig configuration for pin (out)
+ */
+void _hs_config_read_pin(uint8_t pinIndex, HSPinConf *pinConfig) {
     eeprom_busy_wait();
     
     eeprom_read_block(pinConfig,
                       (const void *) hs_config_addr(hs_config_addr_pin[pinIndex]),
                       sizeof(HSPinConf));
+}
+
+/**
+ *  Save configuration for specified pin.
+ *
+ *  @param pinIndex  index of pin in configuration
+ *  @param pinConfig configuration for pin (in)
+ */
+void _hs_config_save_pin(uint8_t pinIndex, const HSPinConf *pinConfig) {
+    eeprom_busy_wait();
+    
+    eeprom_write_block(pinConfig,
+                       (void *) hs_config_addr(hs_config_addr_pin[pinIndex]),
+                       sizeof(HSPinConf));
+}
+
+void _hs_config_objects_init() {
+    for (uint8_t i = 0; i < hs_node_config.numberOfPinPositions; i++) {
+        HSPinConf pin = hs_pin_configurations[i];
+        
+        if (pin.type == HS_CONFIG_PIN_TYPE_TEMP) {
+            DallasTemperature *sensors = new DallasTemperature(pin.number);
+            
+            sensors->begin();
+            hs_pin_config_objects[i] = sensors;
+        }
+    }
+    
+    status.settingsMode = false;
+}
+
+void hs_config_init() {
+    eeprom_busy_wait();
+    
+//    _hsConfigAddressOffset = eeprom_read_byte(0);
+    
+    eeprom_read_block(&hs_node_config,
+                      (const void *) hs_config_addr(hs_config_addr_config),
+                      sizeof(HSConfiguration));
+    
+    for (uint8_t i = 0; i < hs_node_config.numberOfPinPositions; i++) {
+        _hs_config_read_pin(i, &hs_pin_configurations[i]);
+    }
+    for (uint8_t i = 0; i < HS_CONFIG_PIN_LENGTH; i++) {
+        hs_pin_config_objects[i] = 0;
+    }
+    
+    _hs_config_objects_init();
+}
+
+void hs_config_save() {
+    eeprom_busy_wait();
+    
+    eeprom_write_block(&hs_node_config,
+                       (void *) hs_config_addr(hs_config_addr_config),
+                       sizeof(HSConfiguration));
+    
+    for (uint8_t i = 0; i < hs_node_config.numberOfPinPositions; i++) {
+        _hs_config_save_pin(i, &hs_pin_configurations[i]);
+    }
+    
+    _hs_config_objects_init();
+}
+
+void hs_config_enter_settings_mode() {
+    status.settingsMode = true;
+    
+    for (uint8_t i = 0; i < hs_node_config.numberOfPinPositions; i++) {
+        HSPinConf pin = hs_pin_configurations[i];
+        if (pin.type == HS_CONFIG_PIN_TYPE_TEMP) {
+            delete (DallasTemperature *) hs_pin_config_objects[i];
+        }
+    }
+    
+    for (uint8_t i = 0; i < HS_CONFIG_PIN_LENGTH; i++) {
+        hs_pin_config_objects[i] = 0;
+    }
+}
+
+uint16_t hs_config_get_pin_value(uint8_t pinIndex) {
+    HSPinConf pin = hs_pin_configurations[pinIndex];
+    
+    switch (pin.type) {
+        case HS_CONFIG_PIN_TYPE_READ_D:
+            return digitalRead(pin.number);
+        case HS_CONFIG_PIN_TYPE_READ_A:
+            return analogRead(pin.number);
+        case HS_CONFIG_PIN_TYPE_TEMP: {
+            DallasTemperature *sensors = (DallasTemperature *) hs_pin_config_objects[pinIndex];
+            
+            if (sensors) {
+                dbg("gt");
+                float sum = 0;
+                uint8_t sensorCnt = sensors->getDeviceCount();
+                
+                sensors->requestTemperatures();
+                for (uint8_t i = 0; i < sensorCnt; i++) {
+                    sum += sensors->getTempCByIndex(i);
+                    dbg("s: %d", int(sum));
+                }
+                return int((sum / sensorCnt) * 100);
+            }
+        }
+    }
+    return 0;
 }
