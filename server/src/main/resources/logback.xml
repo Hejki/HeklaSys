@@ -1,35 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <property name="PATTERN" value="%-5level %date{ISO8601} [%thread] %class{32}.%method\\(%file:%line\\) - %message%n"/>
-    <!--<insertFromJNDI env-entry-name="${mvn.jndi.appLogsLocation}" as="logsLocation" />-->
+<configuration debug="false">
 
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder>
-            <pattern>${PATTERN}</pattern>
-            <charset>UTF-8</charset>
-        </encoder>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <appender name="STASH" class="net.logstash.logback.appender.LogstashSocketAppender">
+        <syslogHost>10.0.0.7</syslogHost>
+        <port>8514</port>
+        <includeCallerInfo>true</includeCallerInfo>
+        <customFields>{"appname": "heklasys"}</customFields>
     </appender>
 
-    <!--<appender name="ROOT_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
-        <!--<file>${logsLocation}/portal-root.log</file>-->
-        <!--<append>true</append>-->
-        <!--<encoder>-->
-            <!--<pattern>${PATTERN}</pattern>-->
-            <!--<charset>UTF-8</charset>-->
-        <!--</encoder>-->
-        <!--<rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">-->
-            <!--<fileNamePattern>${logsLocation}/portal-root-%i.log.zip</fileNamePattern>-->
-            <!--<maxIndex>10</maxIndex>-->
-        <!--</rollingPolicy>-->
-        <!--<triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">-->
-            <!--<maxFileSize>50MB</maxFileSize>-->
-        <!--</triggeringPolicy>-->
-    <!--</appender>-->
-
-    <root level="WARN">
-        <appender-ref ref="STDOUT"/>
-        <!--<appender-ref ref="ROOT_LOG"/>-->
+    <root>
+        <appender-ref ref="STASH"/>
     </root>
-
-    <logger name="org.hejki" level="DEBUG"/>
 </configuration>

@@ -1,12 +1,18 @@
 
+allprojects {
+    apply plugin: 'java'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
 
-project(':server') {
+
+project(':server2') {
     version = '0.1'
 }
 
-project(':node') {
-    version = '0.1'
-}
+//project(':node') {
+//    version = '0.1'
+//}
 
 
 

@@ -1,98 +1,46 @@
-apply plugin: 'java'
-apply plugin: 'war'
-apply plugin: 'groovy'
-apply plugin: 'lesscss'
-apply plugin: 'flyway'
+apply from: 'goot.gradle'
 
-repositories {
-    mavenCentral()
+ext {
+//    reactorVersion = '1.1.3.RELEASE'
+//    bootVersion = '1.1.5.RELEASE'
 }
 
 dependencies {
-    def springVersion = '4.0.0.RELEASE'
-    def springDataVersion = '1.6.3.RELEASE'
-    def thymeleafVersion = '2.1.2.RELEASE'
-
-    compile(
-            "org.springframework:spring-webmvc:${springVersion}",
-            "org.springframework:spring-jdbc:${springVersion}",
-
-            "org.springframework.data:spring-data-commons:${springDataVersion}",
-//            'com.blogspot.nurkiewicz:jdbcrepository:0.3',
-
-            "org.thymeleaf:thymeleaf-spring4:${thymeleafVersion}",
-            "nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect:1.2.2",
-
-            'ch.qos.logback:logback-classic:1.1.0',
-
-            'postgresql:postgresql:9.1-901.jdbc4',
+    compile ( // Reactor
+            "org.projectreactor:reactor-core",
+            "org.projectreactor:reactor-net",
+            "org.projectreactor.spring:reactor-spring-context",
+//            "com.nurkiewicz.jdbcrepository:jdbcrepository:0.4.1",
+//            "org.springframework.data:spring-data-jdbc-core"
+//          "org.projectreactor:reactor-groovy:$reactorVersion"
     )
 
-    providedCompile (
-            'javax.servlet:servlet-api:2.5',
-            'org.projectlombok:lombok:1.12.4',
-    )
-
+    compile project(':spring-data-jdbc')
     testCompile(
-            'org.spockframework:spock-core:0.7-groovy-2.0',
-            'org.spockframework:spock-spring:0.7-groovy-2.0',
-            "org.springframework:spring-test:${springVersion}",
+            "org.springframework.boot:spring-boot-starter-data-jpa",
     )
 
-    testRuntime (
-            'cglib:cglib-nodep:2.2', // enables mocking of classes (in addition to interfaces)
-            'org.objenesis:objenesis:1.2', // enables mocking of classes without default constructor (together with CGLIB)
+//    compile ( // Spring Boot
+//            "org.springframework.boot:spring-boot-starter-web",
+//            "org.springframework.boot:spring-boot-starter-data-rest",
+//            "org.springframework.boot:spring-boot-starter-data-elasticsearch",
+//            "org.springframework.boot:spring-boot-starter-actuator",
+//            "org.springframework.boot:spring-boot-starter-jdbc",
+//    )
+
+    compile (
+//            "org.mybatis:mybatis:3.2.8",
+//            "org.mybatis:mybatis-spring:1.2.2",
+            'org.postgresql:postgresql:9.4-1200-jdbc41',
+            "com.fasterxml.jackson.core:jackson-core",
+            "net.logstash.logback:logstash-logback-encoder:3.5",
+//            "org.elasticsearch:elasticsearch",
     )
-}
 
-configurations {
-    all*.exclude group: 'commons-logging'
+//    testCompile ( // Test
+//            'junit:junit',
+//            'org.codehaus.groovy:groovy-all',
+//            'org.spockframework:spock-core',
+//            'cglib:cglib-nodep:2.2',
+//    )
 }
-
-lesscss {
-    source = fileTree('src/main/less') {
-        include 'bootstrap/bootstrap.less'
-        include 'style.less'
-    }
-    dest = 'src/main/webapp/WEB-INF/assets/styles'
-    compress = true
-}
-
-flyway {
-    locations = ["filesystem:$projectDir/src/main/db"]
-}
-
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'de.obqo.gradle:gradle-lesscss-plugin:1.0-1.3.3'
-        classpath 'com.googlecode.flyway:flyway-gradle-plugin:2.3'
-    }
-}
-
-compileJava {
-    sourceCompatibility = "1.8"
-}
-
-sourceSets {
-    test {
-        output.resourcesDir = output.classesDir
-    }
-    main {
-        output.resourcesDir = output.classesDir
-    }
-}
-
-tasks.withType(Test) {
-    systemProperty 'configPath', "${parent.projectDir}/app-config.xml"
-}
-
-task expolodedWar(type: Copy) {
-    into "$buildDir/war"
-    with war
-}
-
-expolodedWar.dependsOn('lesscss')
-war.dependsOn('expolodedWar')

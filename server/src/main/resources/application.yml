@@ -1,0 +1,25 @@
+app:
+  udpPort: 32123
+  messageDefaultTimeoutSeconds: 10
+
+server:
+  port: 9090
+
+logging:
+  level:
+    org.hejki.heklasys: DEBUG
+#    reactor: TRACE
+
+spring:
+#  data:
+#    elasticsearch:
+#      cluster-name: elasticsearch_hejki
+#      cluster-nodes: 127.0.0.1:9300
+
+  output:
+    ansi.enabled: ALWAYS
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hejki
+    username: hejki
+    password: pass
