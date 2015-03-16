@@ -169,4 +169,9 @@ _Request:_ `<PIN><valL><valH>`
 
 _Response:_ OK (empty)
 
+## 100 - Get free memory
+_Request:_ empty
 
+_Response:_ OK `<VAL>`
+
+* VAL - value of free memory

@@ -252,11 +252,11 @@ static void make_tcp_ack_with_data_noflags(word dlen) {
   EtherCard::packetSend(IP_HEADER_LEN+TCP_HEADER_LEN_PLAIN+dlen+ETH_HEADER_LEN);
 }
 
-void EtherCard::httpServerReply (word dlen) {
-  make_tcp_ack_from_any(info_data_len,0); // send ack for http get
-  gPB[TCP_FLAGS_P] = TCP_FLAGS_ACK_V|TCP_FLAGS_PUSH_V|TCP_FLAGS_FIN_V;
-  make_tcp_ack_with_data_noflags(dlen); // send data
-}
+//void EtherCard::httpServerReply (word dlen) {
+//  make_tcp_ack_from_any(info_data_len,0); // send ack for http get
+//  gPB[TCP_FLAGS_P] = TCP_FLAGS_ACK_V|TCP_FLAGS_PUSH_V|TCP_FLAGS_FIN_V;
+//  make_tcp_ack_with_data_noflags(dlen); // send data
+//}
 
 static void get_seq() { //get the sequence number of packets after an ack from GET
   SEQ =(((unsigned long)gPB[TCP_SEQ_H_P]*256+gPB[TCP_SEQ_H_P+1])*256+gPB[TCP_SEQ_H_P+2])*256+gPB[TCP_SEQ_H_P+3];
@@ -269,18 +269,18 @@ gPB[TCP_SEQ_H_P+2]= (SEQ & 0xff00 ) >> 8;
 gPB[TCP_SEQ_H_P+3]= (SEQ & 0xff );
 }
 
-void EtherCard::httpServerReplyAck () {
-make_tcp_ack_from_any(info_data_len,0); // send ack for http get
-get_seq(); //get the sequence number of packets after an ack from GET
-}
-
-void EtherCard::httpServerReply_with_flags (word dlen , byte flags) {
-set_seq();
-gPB[TCP_FLAGS_P] = flags; // final packet
-make_tcp_ack_with_data_noflags(dlen); // send data
-SEQ=SEQ+dlen;
-}
-
+//void EtherCard::httpServerReplyAck () {
+//make_tcp_ack_from_any(info_data_len,0); // send ack for http get
+//get_seq(); //get the sequence number of packets after an ack from GET
+//}
+//
+//void EtherCard::httpServerReply_with_flags (word dlen , byte flags) {
+//set_seq();
+//gPB[TCP_FLAGS_P] = flags; // final packet
+//make_tcp_ack_with_data_noflags(dlen); // send data
+//SEQ=SEQ+dlen;
+//}
+//
 //void EtherCard::clientIcmpRequest(const byte *destip) {
 //  setMACandIPs(gwmacaddr, destip);
 //  gPB[ETH_TYPE_H_P] = ETHTYPE_IP_H_V;
@@ -715,7 +715,7 @@ word EtherCard::packetLoop (word plen) {
     return 0;
   }
 
-  return accept(hisport, plen);
+  return accept(80, plen);
 }
 
 //void EtherCard::persistTcpConnection(bool persist){

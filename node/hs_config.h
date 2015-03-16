@@ -61,8 +61,6 @@ struct HSPinConf {
     uint8_t config;
 };
 
-extern HSPinConf hs_pin_configurations[];
-extern const uint8_t hs_config_addr_pin[];
 extern HSConfiguration hs_node_config;
 
 /**
@@ -87,5 +85,13 @@ void hs_config_enter_settings_mode();
  *  @return pin value (digital, analog, temperature)
  */
 uint16_t hs_config_get_pin_value(uint8_t pinIndex);
+
+/**
+ *  Get pin configuration on specified index.
+ *
+ *  @param pinIndex pin configuration index
+ *  @return pin configuration reference
+ */
+HSPinConf *hs_config_get_pin(uint8_t pinIndex);
 
 #endif /* defined(__Node__HSConfig__) */

@@ -2,6 +2,7 @@
 #define NO_CRC_CHECK
 //#define NO_RTC
 //#define DHCPDEBUG
+#define MEMORY_FREE
 
 /**
  *  Size of ethernet buffer.

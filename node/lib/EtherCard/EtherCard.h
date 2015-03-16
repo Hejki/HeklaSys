@@ -144,7 +144,7 @@ public:
   static uint8_t dhcpip[4]; // dhcp server
   static uint8_t dnsip[4];  // dns server
   static uint8_t hisip[4];  // dns result
-  static uint16_t hisport;  // tcp port to connect to (default 80)
+//  static uint16_t hisport;  // tcp port to connect to (default 80)
   static bool using_dhcp;   // whether dhcp is active or not
 //  static bool persist_tcp_connection; // whether to break connections on first packet received
 
@@ -159,9 +159,9 @@ public:
   static void makeUdpReply (char *data,uint8_t len, uint16_t port);
   static uint16_t packetLoop (uint16_t plen);
   static uint16_t accept(uint16_t port, uint16_t plen);
-  static void httpServerReply (uint16_t dlen);
-  static void httpServerReply_with_flags (uint16_t dlen , byte flags);
-  static void httpServerReplyAck ();
+//  static void httpServerReply (uint16_t dlen);
+//  static void httpServerReply_with_flags (uint16_t dlen , byte flags);
+//  static void httpServerReplyAck ();
   static void setGwIp (const uint8_t *gwipaddr);
   static uint8_t clientWaitingGw ();
 //  static uint8_t clientTcpReq (uint8_t (*r)(uint8_t,uint8_t,uint16_t,uint16_t),
