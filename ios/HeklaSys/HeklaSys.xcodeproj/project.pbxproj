@@ -1,0 +1,466 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		26CD258F1A6BBF0300CC6B52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD258E1A6BBF0300CC6B52 /* AppDelegate.swift */; };
+		26CD25911A6BBF0300CC6B52 /* MasterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD25901A6BBF0300CC6B52 /* MasterViewController.swift */; };
+		26CD25931A6BBF0300CC6B52 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD25921A6BBF0300CC6B52 /* DetailViewController.swift */; };
+		26CD25961A6BBF0300CC6B52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26CD25941A6BBF0300CC6B52 /* Main.storyboard */; };
+		26CD25981A6BBF0300CC6B52 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26CD25971A6BBF0300CC6B52 /* Images.xcassets */; };
+		26CD259B1A6BBF0300CC6B52 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 26CD25991A6BBF0300CC6B52 /* LaunchScreen.xib */; };
+		26CD25A71A6BBF0400CC6B52 /* HeklaSysTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD25A61A6BBF0400CC6B52 /* HeklaSysTests.swift */; };
+		26CD25B21A6BBF7100CC6B52 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD25B11A6BBF7100CC6B52 /* Node.swift */; };
+		26CD25BA1A6BC02B00CC6B52 /* Alamofire-SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD25B41A6BC02B00CC6B52 /* Alamofire-SwiftyJSON.swift */; };
+		26CD25BB1A6BC02B00CC6B52 /* Alamofire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD25B51A6BC02B00CC6B52 /* Alamofire.swift */; };
+		26CD25BF1A6BC02B00CC6B52 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD25B91A6BC02B00CC6B52 /* SwiftyJSON.swift */; };
+		26CD25C11A6BC17B00CC6B52 /* PinSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CD25C01A6BC17B00CC6B52 /* PinSetting.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		26CD25A11A6BBF0400CC6B52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26CD25811A6BBF0300CC6B52 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26CD25881A6BBF0300CC6B52;
+			remoteInfo = HeklaSys;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		269EE36E1A890DB700718027 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		26CD25891A6BBF0300CC6B52 /* HeklaSys.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HeklaSys.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		26CD258D1A6BBF0300CC6B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26CD258E1A6BBF0300CC6B52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		26CD25901A6BBF0300CC6B52 /* MasterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterViewController.swift; sourceTree = "<group>"; };
+		26CD25921A6BBF0300CC6B52 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		26CD25951A6BBF0300CC6B52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		26CD25971A6BBF0300CC6B52 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		26CD259A1A6BBF0300CC6B52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		26CD25A01A6BBF0400CC6B52 /* HeklaSysTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HeklaSysTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		26CD25A51A6BBF0400CC6B52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		26CD25A61A6BBF0400CC6B52 /* HeklaSysTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeklaSysTests.swift; sourceTree = "<group>"; };
+		26CD25B11A6BBF7100CC6B52 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		26CD25B41A6BC02B00CC6B52 /* Alamofire-SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Alamofire-SwiftyJSON.swift"; sourceTree = "<group>"; };
+		26CD25B51A6BC02B00CC6B52 /* Alamofire.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alamofire.swift; sourceTree = "<group>"; };
+		26CD25B91A6BC02B00CC6B52 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
+		26CD25C01A6BC17B00CC6B52 /* PinSetting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PinSetting.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		26CD25861A6BBF0300CC6B52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26CD259D1A6BBF0400CC6B52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		26CD25801A6BBF0300CC6B52 = {
+			isa = PBXGroup;
+			children = (
+				26CD258B1A6BBF0300CC6B52 /* HeklaSys */,
+				26CD25A31A6BBF0400CC6B52 /* HeklaSysTests */,
+				26CD258A1A6BBF0300CC6B52 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		26CD258A1A6BBF0300CC6B52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				26CD25891A6BBF0300CC6B52 /* HeklaSys.app */,
+				26CD25A01A6BBF0400CC6B52 /* HeklaSysTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		26CD258B1A6BBF0300CC6B52 /* HeklaSys */ = {
+			isa = PBXGroup;
+			children = (
+				26CD25B31A6BC02B00CC6B52 /* frameworks */,
+				26CD25B01A6BBF4000CC6B52 /* model */,
+				26CD258E1A6BBF0300CC6B52 /* AppDelegate.swift */,
+				26CD25901A6BBF0300CC6B52 /* MasterViewController.swift */,
+				26CD25921A6BBF0300CC6B52 /* DetailViewController.swift */,
+				26CD25941A6BBF0300CC6B52 /* Main.storyboard */,
+				26CD25971A6BBF0300CC6B52 /* Images.xcassets */,
+				26CD25991A6BBF0300CC6B52 /* LaunchScreen.xib */,
+				26CD258C1A6BBF0300CC6B52 /* Supporting Files */,
+				269EE36E1A890DB700718027 /* MyPlayground.playground */,
+			);
+			path = HeklaSys;
+			sourceTree = "<group>";
+		};
+		26CD258C1A6BBF0300CC6B52 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				26CD258D1A6BBF0300CC6B52 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		26CD25A31A6BBF0400CC6B52 /* HeklaSysTests */ = {
+			isa = PBXGroup;
+			children = (
+				26CD25A61A6BBF0400CC6B52 /* HeklaSysTests.swift */,
+				26CD25A41A6BBF0400CC6B52 /* Supporting Files */,
+			);
+			path = HeklaSysTests;
+			sourceTree = "<group>";
+		};
+		26CD25A41A6BBF0400CC6B52 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				26CD25A51A6BBF0400CC6B52 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		26CD25B01A6BBF4000CC6B52 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				26CD25B11A6BBF7100CC6B52 /* Node.swift */,
+				26CD25C01A6BC17B00CC6B52 /* PinSetting.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		26CD25B31A6BC02B00CC6B52 /* frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				26CD25B41A6BC02B00CC6B52 /* Alamofire-SwiftyJSON.swift */,
+				26CD25B51A6BC02B00CC6B52 /* Alamofire.swift */,
+				26CD25B91A6BC02B00CC6B52 /* SwiftyJSON.swift */,
+			);
+			path = frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		26CD25881A6BBF0300CC6B52 /* HeklaSys */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26CD25AA1A6BBF0400CC6B52 /* Build configuration list for PBXNativeTarget "HeklaSys" */;
+			buildPhases = (
+				26CD25851A6BBF0300CC6B52 /* Sources */,
+				26CD25861A6BBF0300CC6B52 /* Frameworks */,
+				26CD25871A6BBF0300CC6B52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HeklaSys;
+			productName = HeklaSys;
+			productReference = 26CD25891A6BBF0300CC6B52 /* HeklaSys.app */;
+			productType = "com.apple.product-type.application";
+		};
+		26CD259F1A6BBF0400CC6B52 /* HeklaSysTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26CD25AD1A6BBF0400CC6B52 /* Build configuration list for PBXNativeTarget "HeklaSysTests" */;
+			buildPhases = (
+				26CD259C1A6BBF0400CC6B52 /* Sources */,
+				26CD259D1A6BBF0400CC6B52 /* Frameworks */,
+				26CD259E1A6BBF0400CC6B52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				26CD25A21A6BBF0400CC6B52 /* PBXTargetDependency */,
+			);
+			name = HeklaSysTests;
+			productName = HeklaSysTests;
+			productReference = 26CD25A01A6BBF0400CC6B52 /* HeklaSysTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		26CD25811A6BBF0300CC6B52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = Hejki;
+				TargetAttributes = {
+					26CD25881A6BBF0300CC6B52 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					26CD259F1A6BBF0400CC6B52 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 26CD25881A6BBF0300CC6B52;
+					};
+				};
+			};
+			buildConfigurationList = 26CD25841A6BBF0300CC6B52 /* Build configuration list for PBXProject "HeklaSys" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 26CD25801A6BBF0300CC6B52;
+			productRefGroup = 26CD258A1A6BBF0300CC6B52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				26CD25881A6BBF0300CC6B52 /* HeklaSys */,
+				26CD259F1A6BBF0400CC6B52 /* HeklaSysTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		26CD25871A6BBF0300CC6B52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26CD25961A6BBF0300CC6B52 /* Main.storyboard in Resources */,
+				26CD259B1A6BBF0300CC6B52 /* LaunchScreen.xib in Resources */,
+				26CD25981A6BBF0300CC6B52 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26CD259E1A6BBF0400CC6B52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		26CD25851A6BBF0300CC6B52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26CD25C11A6BC17B00CC6B52 /* PinSetting.swift in Sources */,
+				26CD25BB1A6BC02B00CC6B52 /* Alamofire.swift in Sources */,
+				26CD25931A6BBF0300CC6B52 /* DetailViewController.swift in Sources */,
+				26CD25911A6BBF0300CC6B52 /* MasterViewController.swift in Sources */,
+				26CD25BF1A6BC02B00CC6B52 /* SwiftyJSON.swift in Sources */,
+				26CD25BA1A6BC02B00CC6B52 /* Alamofire-SwiftyJSON.swift in Sources */,
+				26CD258F1A6BBF0300CC6B52 /* AppDelegate.swift in Sources */,
+				26CD25B21A6BBF7100CC6B52 /* Node.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		26CD259C1A6BBF0400CC6B52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26CD25A71A6BBF0400CC6B52 /* HeklaSysTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		26CD25A21A6BBF0400CC6B52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 26CD25881A6BBF0300CC6B52 /* HeklaSys */;
+			targetProxy = 26CD25A11A6BBF0400CC6B52 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		26CD25941A6BBF0300CC6B52 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26CD25951A6BBF0300CC6B52 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		26CD25991A6BBF0300CC6B52 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				26CD259A1A6BBF0300CC6B52 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		26CD25A81A6BBF0400CC6B52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		26CD25A91A6BBF0400CC6B52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		26CD25AB1A6BBF0400CC6B52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HeklaSys/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		26CD25AC1A6BBF0400CC6B52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HeklaSys/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		26CD25AE1A6BBF0400CC6B52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HeklaSysTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeklaSys.app/HeklaSys";
+			};
+			name = Debug;
+		};
+		26CD25AF1A6BBF0400CC6B52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = HeklaSysTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HeklaSys.app/HeklaSys";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		26CD25841A6BBF0300CC6B52 /* Build configuration list for PBXProject "HeklaSys" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26CD25A81A6BBF0400CC6B52 /* Debug */,
+				26CD25A91A6BBF0400CC6B52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		26CD25AA1A6BBF0400CC6B52 /* Build configuration list for PBXNativeTarget "HeklaSys" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26CD25AB1A6BBF0400CC6B52 /* Debug */,
+				26CD25AC1A6BBF0400CC6B52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		26CD25AD1A6BBF0400CC6B52 /* Build configuration list for PBXNativeTarget "HeklaSysTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26CD25AE1A6BBF0400CC6B52 /* Debug */,
+				26CD25AF1A6BBF0400CC6B52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 26CD25811A6BBF0300CC6B52 /* Project object */;
+}
