@@ -101,11 +101,19 @@ static void _hs_config_objects_init() {
     for (uint8_t i = 0; i < hs_node_config.numberOfPinPositions; i++) {
         HSPinConf pin = hs_pin_configurations[i];
         
-        if (pin.type == HS_CONFIG_PIN_TYPE_TEMP) {
-            DallasTemperature *sensors = new DallasTemperature(pin.number);
+        switch (pin.type) {
+            case HS_CONFIG_PIN_TYPE_READ_D:
+                pinMode(pin.number, INPUT);
+                break;
+            case HS_CONFIG_PIN_TYPE_READ_A:
+                break;
+            case HS_CONFIG_PIN_TYPE_TEMP: {
+                DallasTemperature *sensors = new DallasTemperature(pin.number);
             
-            sensors->begin();
-            hs_pin_config_objects[i] = sensors;
+                sensors->begin();
+                hs_pin_config_objects[i] = sensors;
+                break;
+            }
         }
     }
     

@@ -24,3 +24,5 @@
 #endif
 
 #define NET_CS_PIN              9
+
+#define GENERATE_MAC_ADDRESS(rtcID) {0x50, 0x47, 0xE4, rtcID[4], rtcID[6], rtcID[7]}

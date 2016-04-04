@@ -59,7 +59,8 @@ bool hs_setup() {
     uint8_t rtcId[8];
     RTC.idRead(rtcId);
 
-    if (ether.begin(sizeof Ethernet::buffer, rtcId+2, NET_CS_PIN) == 0) {
+    const byte macAddress[] = GENERATE_MAC_ADDRESS(rtcId);
+    if (ether.begin(sizeof Ethernet::buffer, macAddress, NET_CS_PIN) == 0) {
 //        dbg("Cannot init ether card with MAC: %x:%x:%x:%x:%x:%x",
 //            rtcId[2], rtcId[3], rtcId[4], rtcId[5], rtcId[6], rtcId[7]);
         return false;
@@ -92,17 +93,12 @@ void hs_loop() {
 void hs_udpReceive(word port, byte ip[4], const char *data, word msgLength) {
     dbg("%d.%d.%d.%d:%d, len: %d", ip[0], ip[1], ip[2], ip[3], port, msgLength);
     
-//    uint8_t messageLength = (msgLength & 0xFF);
     if (msgLength >= 3) {
-//        const uint8_t type = data[0];
-//        const uint8_t length = data[1];
-//        const uint8_t id = data[2];
         HSMessage *message = hs_message_create(data[2]);
         
         if (msgLength != (data[1] + 4)) {
             hs_message_fill_error(message, HS_MESSAGE_ERR_BAD_MSG_LENGTH);
         } else {
-            // dbg("t: %d, l: %d, id: %d, crc: %d", type, length, id, data[messageLength - 1]);
             hs_message_process(message, data[0], data[1], data[msgLength - 1], data);
         }
         
@@ -130,10 +126,6 @@ void hs_processPins() {
     
     for (uint8_t i = 0; i < hs_node_config.numberOfPinPositions; i++) {
         HSPinConf pin = *hs_config_get_pin(i);
-        
-//        if (pin.type != 0) {
-//            dbg("n: %d, t: %d, c: %d", pin.number, pin.type, pin.config);
-//        }
         
         switch (pin.type) {
             case HS_CONFIG_PIN_TYPE_READ_D:

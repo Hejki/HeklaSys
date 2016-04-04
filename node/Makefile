@@ -8,7 +8,7 @@ PROJECT_DIR       = $(CURDIR)
 ARDMK_DIR         = $(PROJECT_DIR)/make
 
 ### Path to the Arduino application and ressources directory.
-ARDUINO_DIR       = /Applications/Arduino.app/Contents/Java
+ARDUINO_DIR       = /Applications/Arduino.app/Contents/Resources/Java
 
 ### Path to where the your project's libraries are stored.
 USER_LIB_PATH     :=  $(PROJECT_DIR)/lib

@@ -153,7 +153,7 @@ static void hs_message_fill_response(HSMessage *msg, uint8_t type, uint8_t lengt
             
         case HS_MESSAGE_TYPE_GET_PIN_SETTING:
             if (requestData[0] < 0 || requestData[0] > HS_CONFIG_MAX_PIN_INDEX) {
-                hs_message_fill_error(msg, HS_MESSAGE_ERR_MSG_INCORRECT_IMPL);
+                hs_message_fill_error(msg, HS_MESSAGE_ERR_BAD_REQUEST_DATA);
             } else {
                 HSPinConf pinConfig = *hs_config_get_pin(requestData[0]);
                 

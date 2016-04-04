@@ -93,7 +93,7 @@ typedef struct {
 #define DHCP_REQUEST_TIMEOUT 10000
 
 static byte dhcpState = DHCP_STATE_INIT;
-static char hostname[] = "Arduino-00";
+static char hostname[] = "Hejkino-00";
 static uint32_t currentXid;
 static uint32_t stateTimer;
 static uint32_t leaseStart;
@@ -261,6 +261,12 @@ static bool dhcp_received_message_type (word len, byte msgType) {
     }
 }
 
+static char toAsciiHex(byte b) {
+    char c = b & 0x0f;
+    c += (c <= 9) ? '0' : 'A'-10;
+    return c;
+}
+
 bool EtherCard::dhcpSetup () {
 	// Use during setup, as this discards all incoming requests until it returns.
 	// That shouldn't be a problem, because we don't have an IP-address yet.
@@ -269,8 +275,8 @@ bool EtherCard::dhcpSetup () {
     using_dhcp = true;
 
 	// Set a unique hostname, use Arduino-?? with last octet of mac address
-	 hostname[8] = '0' + (mymac[5] >> 4);
-	 hostname[9] = '0' + (mymac[5] & 0x0F);
+	 hostname[8] = toAsciiHex(mymac[5] >> 4);
+	 hostname[9] = toAsciiHex(mymac[5]);
 
 	 dhcpState = DHCP_STATE_INIT;
 	 word start = millis();	
